@@ -1,0 +1,17 @@
+.border_green_dashed{
+    outline: medium dashed green;
+}
+
+.border_red_dashed{
+    outline: medium dashed red;
+}
+
+.border_blueviolet_solid{
+    outline: medium solid blueviolet;
+}
+
+.border_yellow_solid{
+    outline: medium solid yellow;
+}
+
+
