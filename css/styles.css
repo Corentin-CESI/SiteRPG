@@ -10,7 +10,7 @@ header.header {
 .img_container{
     height: 50px;
     width: 50px;
-    background-image: url('../images/logo.png');
+    background-image: url('../images/logo/logo.png');
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
     /* background-size: 1920px 776px; */
@@ -71,7 +71,7 @@ header.header {
 
 .top_content {
     min-height: 600px;
-    background-image: url('../images/page_content.png');
+    background-image: url('../images/logo/page_content.png');
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
     /* background-size: 1920px 776px; */
@@ -136,3 +136,4 @@ table td img {
     max-width: 100px;
     max-height: 100px;
 }
+/*------------------------------------------------------------------------------*/
