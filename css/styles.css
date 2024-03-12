@@ -10,7 +10,7 @@ header.header {
 .img_container{
     height: 50px;
     width: 50px;
-    background-image: url('../images/logo.png');
+    background-image: url('../images/logo/logo.png');
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
     /* background-size: 1920px 776px; */
@@ -20,40 +20,6 @@ header.header {
     /* width: 20px; */
     /* height: 10%; */
     /* margin-right: 100px; */
-
-
-
-.menu_principal ul {
-    display: flex;
-    list-style: none;
-}
-
-.menu_principal ul li {
-    margin: 0 10px;
-    color: white;
-}
-
-.menu_principal ul li a {
-    text-decoration: none;
-    padding: 10px;
-}
-
-
-
-.menu_connecter ul {
-    display: flex;
-    list-style: none;
-}
-
-.menu_connecter ul li {
-    margin: 0 10px;
-    color: white;
-}
-
-.menu_connecter ul li a {
-    text-decoration: none;
-    padding: 10px;
-}
 
 /*------------------------------------------------------------------------------*/
 .section_div {
@@ -71,7 +37,7 @@ header.header {
 
 .top_content {
     min-height: 600px;
-    background-image: url('../images/page_content.png');
+    background-image: url('../images/logo/page_content.png');
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
     /* background-size: 1920px 776px; */
@@ -136,3 +102,4 @@ table td img {
     max-width: 100px;
     max-height: 100px;
 }
+/*------------------------------------------------------------------------------*/
