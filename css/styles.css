@@ -4,11 +4,6 @@ header.header {
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    font-family: 'Arimo', sans-serif;
-}
-
-.section_div{
-    background-color:#f1f1f1;
 }
 
 .img_container{
@@ -19,12 +14,7 @@ header.header {
     background-size: cover;
 }
 
-.comment{
-    font-weight: bold;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
+/*------------------------ ici -------------------------------------------------*/
 
 .custom-button {
     width: auto;
@@ -35,7 +25,6 @@ header.header {
     background-color: #862530;
     color: #e8e6e3;
     cursor: pointer;
-    font-weight: bold;
 }
 
 .custom-button:hover {
@@ -44,46 +33,7 @@ header.header {
 
 .button-link {
     color: #ffffff;
-}
-
-.button-link:hover {
-    color: #862530;
-}
-/*------------------------------------------------------------------------------*/
-.column_section {
-    display: flex;
-    align-items: flex-start; /* Aligner les éléments en haut */
-}
-
-.left-content {
-    flex: 1; /* Prend tout l'espace disponible */
-    margin-right: 20px; /* Marge pour séparer les éléments */
-}
-
-.right-content {
-    flex: 1; /* Prend tout l'espace disponible */
-}
-
-.custom-button {
-    width: 100%;
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    background-color: #862530;
-    color: #e8e6e3;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px; /* Espacement entre le titre et le bouton */
-}
-
-.custom-button:hover {
-    background-color: #7c1924;
-}
-
-.button-link {
-    color: #ffffff;
-    text-decoration: none; /* Supprimer le soulignement du lien */
+    text-decoration: none;
 }
 
 .button-link:hover {
@@ -95,21 +45,26 @@ header.header {
     color: white;
     font-family: Arial, sans-serif;
 }
-
-.section_div {
+/*------------------------------------------------------------------------------*/
+.section {
     background-color: #f1f1f1;
+}
+
+.content {
     display: flex;
+    align-items: flex-start;
 }
 
-.border_red_dashed {
-    border: 1px dashed red; /* Pour le débogage */
+.left-content {
+    flex: 1;
+    margin-right: 20px;
+    margin-top: 50px;
 }
 
-.border_blueviolet_solid {
-    border: 1px solid blueviolet; /* Pour le débogage */
+.right-content {
+    flex: 1;
+    margin-top: 50px;
 }
-
-/*---------------------             -------------------------------------------*/
 
 .section_div {
     min-height: 400px;
@@ -130,8 +85,6 @@ header.header {
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-   
-
 }
 
 .column_section {
@@ -148,30 +101,6 @@ header.header {
 
 .column_section_3 {
     width: 33%;
-}
-
-
-.button-link:hover {
-    color: #862530;
-}
-
-.comment {
-    font-weight: bold;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-.section_div {
-    background-color: #f1f1f1;
-    display: flex;
-}
-
-.border_red_dashed {
-    border: 1px dashed red; /* Pour le débogage */
-}
-
-.border_blueviolet_solid {
-    border: 1px solid blueviolet; /* Pour le débogage */
 }
 
 img {
@@ -200,6 +129,23 @@ table td img {
 }
 /*------------------------------------------------------------------------------*/
 .footer {
-    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 20px;
     text-align: center;
+}
+
+.footer div {
+    margin-bottom: 20px;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.footer h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
 }
