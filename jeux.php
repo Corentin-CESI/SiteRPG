@@ -1,3 +1,7 @@
+<?php 
+    require_once("db.php");
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,13 +15,27 @@
 <body>
     <?php require "header.html" ?>
     <div class="game-list">
-        <div class="game">
-            <a href="">
+    <?php 
+        $jeux = getjeux_static();
+        
+        for ($i=0; $i < count($jeux) ; $i++) { 
+            $titre = $jeux[$i][0];
+            $srcImg = $jeux[$i][1];
+            $desc = $jeux[$i][2];
+            echo '
+            <div class="game">
+                <h2>'.$titre.'</h2>
+                <img src="'.$srcImg.'" alt="Logo Donjons & Dragons" />
+                <p>'.$desc.'</p>
+            </div>';
+        }
+    ?>
+
+        <!-- <div class="game">
                 <h2>Donjons & Dragons</h2>
                 <img src="images/logo/DnD_logo.png" alt="Logo Donjons & Dragons" />
                 <p>Un jeu de rôle fantastique classique mettant en scène des aventuriers explorant des donjons et combattant des monstres.</p>
-            </a>
-            </div>
+        </div>
         <div class="game">
             <h2>Index Card RPG</h2>
             <img src="images/logo/Index_card_RPG_logo.jpg" alt="Logo Index Card RPG" />
@@ -47,7 +65,7 @@
             <h2>Cyberpunk</h2>
             <img src="images/logo/Cyberpunk_logo.png" alt="Logo Cyberpunk" />
             <p>Un jeu de rôle de science-fiction dystopique se déroulant dans un futur proche où la technologie et le crime se mêlent.</p>
-        </div>
+        </div> -->
     </div>
 </body>
 </html>
