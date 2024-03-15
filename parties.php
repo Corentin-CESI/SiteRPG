@@ -1,8 +1,7 @@
 <?php 
     require_once("db.php");
-    require_once("recherche_parties.php");
 ?>
-
+    
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,7 +28,7 @@
         </form>
     </div> -->
 
-    <div class="search-container">
+    <!-- <div class="search-container">
     <h3>Recherche de Parties</h3>
     <form method="GET" action="recherche_parties.php">
         <div class="form-group">
@@ -42,7 +41,11 @@
         </div>
         <button type="submit">Rechercher</button>
     </form>
-</div>
+</div> -->
+
+<?php require_once("recherche_parties.php");?>
+<br>
+<hr>
 
 
     <div class="party-list">
