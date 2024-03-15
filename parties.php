@@ -1,5 +1,6 @@
 <?php 
     require_once("db.php");
+    require_once("recherche_parties.php");
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
 </head>
 <body>
     <?php require "header.html" ?>
-    <div class="search-container">
+    <!-- <div class="search-container">
         <h2>Recherche de Parties</h2>
         <form action="#" method="GET">
             <div class="form-group">
@@ -26,7 +27,23 @@
             </div>
             <button type="submit">Rechercher</button>
         </form>
-    </div>
+    </div> -->
+
+    <div class="search-container">
+    <h3>Recherche de Parties</h3>
+    <form method="GET" action="recherche_parties.php">
+        <div class="form-group">
+            <label for="horaire">Horaire (YYYY-MM-DD HH:MM:SS) :</label>
+            <input type="datetime-local" id="horaire" name="horaire">
+        </div>    
+        <div class="form-group">
+            <label for="duree">Durée en minutes :</label>
+            <input type="number" id="duree" name="duree" min="0">
+        </div>
+        <button type="submit">Rechercher</button>
+    </form>
+</div>
+
 
     <div class="party-list">
         <h3>Liste des Parties Disponibles</h3>
@@ -61,8 +78,5 @@
         ?>
     </div>
 
-    <div class="create-party">
-        <button>Créer une Partie</button>
-    </div>
 </body>
 </html>
