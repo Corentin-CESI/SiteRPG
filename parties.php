@@ -1,10 +1,13 @@
+<?php 
+    require_once("db.php");
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parties</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo&display=swap">
     <link href="css/border_debug.css" rel="stylesheet"/>
     <link href="css/styles_parties.css"  rel="stylesheet">
 </head>
@@ -27,10 +30,20 @@
 
     <div class="party-list">
         <h3>Liste des Parties Disponibles</h3>
-        <ul>
-            <li>Nom de la partie 1 - DM: Maître du Jeu - Joueurs: 3/5 - Durée: 2h</li>
-            <li>Nom de la partie 2 - DM: Maître du Jeu - Joueurs: 4/6 - Durée: 3h</li>
-        </ul>
+
+        <?php
+            $parties = getparty_static();            
+
+            for ($i=0; $i < count($parties) ; $i++) { 
+                $nom = $parties[$i][0];
+                $horaire = $parties[$i][1];;
+                $duree = $parties[$i][2];
+                echo '
+                <div>
+                    <h4>'.$nom.'</h4> <p>'.$horaire.' '.$duree.'</p>
+                </div><br>';
+            }
+        ?>
     </div>
 
     <div class="create-party">

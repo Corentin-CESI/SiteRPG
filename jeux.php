@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeux</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo&display=swap">
     <link href="css/border_debug.css" rel="stylesheet"/>
     <link href="css/styles_jeux.css" rel="stylesheet"/>
 </head>
@@ -17,18 +16,29 @@
     <div class="game-list">
     <?php 
         $jeux = getjeux_static();
-        
+
         for ($i=0; $i < count($jeux) ; $i++) { 
             $titre = $jeux[$i][0];
+            // $liens = getReglesByJeu($titre);
             $srcImg = $jeux[$i][1];
-            $desc = $jeux[$i][2];
+            $desc =  $jeux[$i][2];
+            // $lien = (count($liens) > $i) ? $liens[$i] : "jeux.php";
+                       
             echo '
             <div class="game">
-                <h2>'.$titre.'</h2>
-                <img src="'.$srcImg.'" alt="Logo Donjons & Dragons" />
-                <p>'.$desc.'</p>
+                 
+                    <h2>'.$titre.'</h2>
+                    <img src="'.$srcImg.'" alt="Logo Donjons & Dragons" />
+                    <p>'.$desc.'</p>
+                
+                <div>
+                    <button class="custom-button">règles</button>
+                    <button class="custom-button">scénario</button>
+                </div>
             </div>';
         }
+        // <a href="'.$lien.'">
+        // </a>
     ?>
 
         <!-- <div class="game">
@@ -69,4 +79,3 @@
     </div>
 </body>
 </html>
-
