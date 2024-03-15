@@ -18,10 +18,11 @@
         $jeux = getjeux_static();
 
         for ($i=0; $i < count($jeux) ; $i++) { 
-            $titre = $jeux[$i][0];
+            // var_dump($jeux[$i]);
+            $titre = $jeux[$i]["UNI_NOM"];
             // $liens = getReglesByJeu($titre);
-            $srcImg = $jeux[$i][1];
-            $desc =  $jeux[$i][2];
+            $srcImg = $jeux[$i]["UNI_ALIAS"];
+            $desc =  $jeux[$i]["UNI_DESCRIPTION"];
             // $lien = (count($liens) > $i) ? $liens[$i] : "jeux.php";
                        
             echo '
