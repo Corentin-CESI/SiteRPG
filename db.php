@@ -87,14 +87,23 @@ while ($row = $stmt->fetch()) {
 
         function getpersonnage_static()
         {
-            $personnage = [
-                ["Aelorin Moonshadow","Elf","Rôdeur","5","Actif"],
-                ["Thrain Stoneshield","Nain","Paladin","5","Actif"],
-                ["Lilith Shadowcaster","Humaine","Sorcier","5","Actif"],
-                ["Zephyros Stormrider","Génasi de l'Air","Barde","5","Actif"],
-                ["Kaida Fireheart","Dragonborn","Guerrier","4","Inactif"],
-            ];
-            return $personnage;
+            global $pdo_conn;
+            $sql = "SELECT * FROM t_personnage_prs";
+            $stmt = $pdo_conn->query($sql);
+            $personnages = [];
+            
+            while ($row = $stmt->fetch()) {
+                $personnage = [
+                    "PRS_ID" => $row["PRS_ID"],
+                    "PRS_NOM" => $row["PRS_NOM"],
+                    "PRS_RACE" => $row["PRS_RACE"],
+                    "PRS_CLASSE" => $row["PRS_CLASSE"],
+                    "PRS_NIVEAU" => $row["PRS_NIVEAU"],
+                    "PRS_ACTIF" => $row["PRS_ACTIF"]
+                ];
+                array_push($personnages,$personnage);
+            }
+            return $personnages;
         }
 
         function getparty_static()
