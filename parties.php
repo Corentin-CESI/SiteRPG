@@ -30,18 +30,33 @@
 
     <div class="party-list">
         <h3>Liste des Parties Disponibles</h3>
+        <br>
 
         <?php
-            $parties = getparty_static();            
+             $parties = getparty_static();            
 
             for ($i=0; $i < count($parties) ; $i++) { 
-                $nom = $parties[$i][0];
-                $horaire = $parties[$i][1];;
-                $duree = $parties[$i][2];
+                $lieu = $parties[$i]["PAT_LIEU"];
+                $horaire = $parties[$i]["PAT_HORAIRE"];
+                $duree = $parties[$i]["PAT_DUREE"];
+                $maitredujeu = $parties[$i]["PAT_MAITREDUJEU"];
+                           
                 echo '
-                <div>
-                    <h4>'.$nom.'</h4> <p>'.$horaire.' '.$duree.'</p>
-                </div><br>';
+                <div class="game">        
+                        <h4>'.$lieu.'</h4>
+                        <p>Horaire : '.$horaire.'</p>
+                        <p>Duree en min : '.$duree.'</p>
+                        <p>ID maitre de jeu : '.$maitredujeu.'</p>
+                        <br>
+                </div>';
+            // for ($i=0; $i < count($parties) ; $i++) { 
+            //     $nom = $parties[$i][0];
+            //     $horaire = $parties[$i][1];;
+            //     $duree = $parties[$i][2];
+            //     echo '
+            //     <div>
+            //         <h4>'.$nom.'</h4> <p>'.$horaire.' '.$duree.'</p>
+            //     </div><br>';
             }
         ?>
     </div>

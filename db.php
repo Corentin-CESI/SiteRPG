@@ -108,13 +108,21 @@ while ($row = $stmt->fetch()) {
 
         function getparty_static()
         {
-            $parties = [
-                ["Les Larmes d'Elérion"," 2023-12-06 14:00:00","300"],
-                ["Les Ombres de la Cité Interdite","2023-12-06 17:00:00","270"],
-                ["La Folie du Nécromancien","2023-12-08 17:00:00","180"],
-                ["L'Ombre du Rift Quantique","2023-12-09 11:00:00","240"],
-                ["Le Coup du Siècle","2023-12-10 13:00:00","120"],
-            ];
+            global $pdo_conn;
+            $sql = "SELECT * FROM t_partie_pat";
+            $stmt = $pdo_conn->query($sql);
+            $parties = [];
+            
+            while ($row = $stmt->fetch()) {
+                $partie = [
+                    "PAT_ID" => $row["PAT_ID"],
+                    "PAT_LIEU" => $row["PAT_LIEU"],
+                    "PAT_HORAIRE" => $row["PAT_HORAIRE"],
+                    "PAT_DUREE" => $row["PAT_DUREE"],
+                    "PAT_MAITREDUJEU" => $row["PAT_MAITREDUJEU"]
+                ];
+                array_push($parties,$partie);
+            }
             return $parties;
-        }  
+        }
 ?>

@@ -6,6 +6,7 @@
     <title>Site RPG</title>
     <link href="css/border_debug.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
+    <link href="css/styles_news.css" rel="stylesheet"/>
 </head>
 <body>
 
