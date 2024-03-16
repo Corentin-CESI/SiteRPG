@@ -8,7 +8,7 @@
     <link href="css/styles_jeux.css" rel="stylesheet"/>
 </head>
 <body>
-    <?php require "header.html" ?>
+    <?php require "header.php" ?>
     <div class="game-list">
         <div class="game">
             <h2>Index Card RPG</h2>

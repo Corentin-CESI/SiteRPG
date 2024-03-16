@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     require_once("db.php");
 ?>
     
@@ -12,7 +13,7 @@
     <link href="css/styles_parties.css"  rel="stylesheet">
 </head>
 <body>
-    <?php require "header.html" ?>
+    <?php require "header.php" ?>
 
 <?php 
     // Vérifie si les critères de recherche sont présents dans le formulaire soumis

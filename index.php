@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +16,7 @@
 
     <?php 
     try {
-        require "header.html" ;
+        require "header.php" ;
     } catch (\Throwable $th) {
         require "404.html";
     }        
