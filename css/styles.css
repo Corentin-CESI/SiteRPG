@@ -6,19 +6,49 @@ header.header {
     padding: 10px;
 }
 
-.img_container{
-    height: 50px;
-    width: 50px;
-    background-image: url('../images/logo/logo.png');
+.top_content {
+    min-height: 600px;
+    background-image: url('../images/logo/page_content.png');
     background-repeat: no-repeat;
     background-size: cover;
+    color: white;
 }
 
-/*------------------------ ici -------------------------------------------------*/
+.left-content {
+    flex: 1;
+    margin-right: 50px;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.right-content {
+    flex: 1;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.left-content h2 {
+    font-size: 36px;
+}
+
+.left-content .custom-button {
+    font-size: 18px;
+}
+
+.right-content p {
+    font-size: 33px;
+}
 
 .custom-button {
     width: auto;
-    padding: 8px 16px;
+    padding: 19px 38px;
     font-size: 14px;
     border: none;
     border-radius: 5px;
@@ -39,6 +69,7 @@ header.header {
 .button-link:hover {
     color: #862530;
 }
+/*------------------------  -------------------------------------------------*/
 
 .comment {
     font-weight: bold;
@@ -55,36 +86,12 @@ header.header {
     align-items: flex-start;
 }
 
-.left-content {
-    flex: 1;
-    margin-right: 20px;
-    margin-top: 50px;
-}
-
-.right-content {
-    flex: 1;
-    margin-top: 50px;
-}
-
 .section_div {
     min-height: 400px;
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-}
-
-.center_verticaly{
-    margin-top: auto;
-    margin-bottom: auto;  
-}
-
-.top_content {
-    min-height: 600px;
-    background-image: url('../images/logo/page_content.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
 }
 
 .column_section {
@@ -95,38 +102,12 @@ header.header {
     width: 100%;
 }
 
-.column_section_2 {
-    width: 50%;
-}
-
-.column_section_3 {
-    width: 33%;
-}
-
 img {
     width: 100%;
     margin-top: 20px; 
 }
 /*---------------------------------------------------------------------------*/
-.table-container {
-    margin-top: 20px;
-}
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-
-table td img {
-    max-width: 100px;
-    max-height: 100px;
-}
 /*------------------------------------------------------------------------------*/
 .footer {
     background-color: #f0f0f0;
