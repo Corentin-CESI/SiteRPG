@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     require_once("db.php");
 ?>
 
@@ -32,18 +33,6 @@
                         <p>'.$race.''.$classe.'<p>'.$niveau.''.$actif.'</p>
                 </div>';
             }           
-
-
-            // for ($i=0; $i < count($personnage) ; $i++) { 
-            //     $nom = $personnage[$i][0];
-            //     $race = $personnage[$i][1];
-            //     $classe = $personnage[$i][2];
-            //     $niveau = $personnage[$i][3];
-            //     $etat = $personnage[$i][4];
-            //     echo '
-            //     <div>
-            //         <h4>'.$nom.'</h4> <p>'.$race.' '.$classe.' '.$niveau.' '.$etat.'</p>
-            //     </div><br>';
         ?>
 
     </div>

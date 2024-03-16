@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 //------------------------------------
 //  _____      _ _    ____________ 
 // |_   _|    (_) |   |  _  \ ___ \
@@ -21,7 +21,6 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES => false,
 ];
 try {
-     // = new PDO($dsn, $user, $password, $options);
     $pdo_conn = new PDO($dsn, $user, $password, $options);
 } catch (PDOException $e) {
     $msg = $e->getMessage();

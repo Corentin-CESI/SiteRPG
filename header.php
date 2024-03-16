@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <head>
     <link href="css/border_debug.css" rel="stylesheet"/>
     <link href="css/styles_menu.css" rel="stylesheet"/>
