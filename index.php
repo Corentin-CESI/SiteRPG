@@ -8,6 +8,8 @@
     <link href="css/border_debug.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
     <link href="css/styles_news.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="carrousel.js" defer></script>
 </head>
 <body>
 
