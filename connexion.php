@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupère les valeurs du formulaire et nettoie les données

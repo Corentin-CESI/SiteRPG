@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,6 +7,6 @@
 </head>
 <body>
     <h1>Erreur</h1>
-    <p><?php echo isset($_GET['msg']) ? htmlspecialchars($_GET['msg']) : 'Une erreur inattendue s\'est produite.'; ?></p>
+    <p><?php echo isset($_GET['']) ? htmlspecialchars($_GET['']) : 'Une erreur inattendue s\'est produite.'; ?></p>
 </body>
 </html>
