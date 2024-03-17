@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($login) || empty($pwd_unhashed)) {
         $error = "Veuillez fournir à la fois le login et le mot de passe.";
     } else {
-        // Connexion à la base de données
+        // Connexion à la base de données (remplacé par votre propre code de connexion)
         $host = 'localhost';
         $user = 'root';
         $password = '';
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Requête SQL pour récupérer le mot de passe correspondant au login
-        $sql = "SELECT CPT_NOM, CPT_PWD FROM t_compte_cpt WHERE CPT_NOM = :login";
+        $sql = "SELECT CPT_NOM, CPT_PWD, CPT_ADMIN FROM t_compte_cpt WHERE CPT_NOM = :login";
         $stmt = $pdo_conn->prepare($sql);
         $stmt->bindParam(':login', $login);
         $stmt->execute();
@@ -42,9 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             // Vérifie si le mot de passe est correct
             if ($pwd_unhashed == $user['CPT_PWD']) {
-                // Authentification réussie : stocke le login dans la session et redirige vers la page d'accueil
-                // Stocke le nom d'utilisateur dans la session
+                // Authentification réussie : stocke le login dans la session
                 $_SESSION['login'] = $user['CPT_NOM'];
+
+                // Vérifie si l'utilisateur est un administrateur
+                if ($user['CPT_ADMIN'] == 1) {
+                    $_SESSION['CPT_ADMIN'] = 1;
+                }
+
+                // Redirige vers la page d'accueil
                 header("Location: index.php");
                 exit();
             } else {

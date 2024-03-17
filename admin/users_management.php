@@ -3,7 +3,7 @@
 require_once("../db.php");
 
 // Initialiser les variables pour stocker les données du formulaire
-$id = $login = $password = "";
+$id = $login = $password = $admin = "";
 $action = "";
 
 // Vérifier si une action est spécifiée dans l'URL
@@ -21,23 +21,25 @@ function displayUsers() {
 }
 
 // Fonction pour créer un utilisateur
-function createUser($login, $password) {
+function createUser($login, $password, $admin) {
     global $pdo_conn;
-    $sql = "INSERT INTO t_compte_cpt (CPT_NOM, CPT_PWD) VALUES (:login, :password)";
+    $sql = "INSERT INTO t_compte_cpt (CPT_NOM, CPT_PWD, CPT_ADMIN) VALUES (:login, :password, :admin)";
     $stmt = $pdo_conn->prepare($sql);
     $stmt->bindParam(':login', $login);
     $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':admin', $admin);
     $stmt->execute();
 }
 
 // Fonction pour modifier un utilisateur
-function updateUser($id, $login, $password) {
+function updateUser($id, $login, $password, $admin) {
     global $pdo_conn;
-    $sql = "UPDATE t_compte_cpt SET CPT_NOM = :login, CPT_PWD = :password WHERE CPT_ID = :id";
+    $sql = "UPDATE t_compte_cpt SET CPT_NOM = :login, CPT_PWD = :password, CPT_ADMIN = :admin WHERE CPT_ID = :id";
     $stmt = $pdo_conn->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':login', $login);
     $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':admin', $admin);
     $stmt->execute();
 }
 
@@ -89,6 +91,7 @@ if ($action == "edit") {
     // Pré-remplir les valeurs dans le formulaire
     $id = $user['CPT_ID'];
     $login = $user['CPT_NOM'];
+    $admin = $user['CPT_ADMIN'];
 }
 
 // Vérifier si le formulaire de création/modification est soumis
@@ -97,17 +100,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Récupérer les données du formulaire
         $login = $_POST['login'];
         $password = $_POST['password'];
+        $admin = $_POST['admin'];
 
         // Créer l'utilisateur
-        createUser($login, $password);
+        createUser($login, $password, $admin);
     } elseif ($action == "update") {
         // Récupérer les données du formulaire
         $id = $_POST['id'];
         $login = $_POST['login'];
         $password = $_POST['password'];
+        $admin = $_POST['admin'];
 
         // Mettre à jour l'utilisateur
-        updateUser($id, $login, $password);
+        updateUser($id, $login, $password, $admin);
     }
 }
 
@@ -141,6 +146,10 @@ $users = displayUsers();
             <h3>Créer un Utilisateur</h3>
             <input type="text" name="login" placeholder="Nom d'utilisateur" required>
             <input type="password" name="password" placeholder="Mot de passe" required>
+            <select name="admin">
+                <option value="0">Non-Admin</option>
+                <option value="1">Admin</option>
+            </select>
             <button type="submit">Créer</button>
         </form>
 
@@ -155,6 +164,13 @@ $users = displayUsers();
             <div class="form-row">
                 <label for="new-password">Mot de passe:</label>
                 <input type="password" id="new-password" name="password" placeholder="Nouveau mot de passe">
+            </div>
+            <div class="form-row">
+                <label for="admin">Admin:</label>
+                <select id="admin" name="admin">
+                    <option value="0" <?php if ($admin == 0) echo "selected"; ?>>Non-Admin</option>
+                    <option value="1" <?php if ($admin == 1) echo "selected"; ?>>Admin</option>
+                </select>
             </div>
             <button type="submit">Modifier</button>
         </form>

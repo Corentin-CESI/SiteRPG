@@ -32,7 +32,7 @@
       
     <?php 
     try {
-        require "footer.html" ;
+        require "footer.php" ;
     } catch (\Throwable $th) {
         require "404.html";
     }        
