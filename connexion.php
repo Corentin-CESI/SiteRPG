@@ -64,31 +64,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-    <link href="css/styles.css" rel="stylesheet"/>
-    <link href="css/styles_menu.css" rel="stylesheet"/>
+    <title>Page de Connexion</title>
+    <link href="css/border_debug.css" rel="stylesheet"/>
+    <link href="css/styles_connexion.css" rel="stylesheet"/>
 </head>
-
-<header>
-    <?php require "header.php" ?>
-</header>
-
 <body>
-    <h2>Connexion</h2>
-    <?php if(isset($error)) { ?>
-        <p><?php echo $error; ?></p>
-    <?php } ?>
-    <form method="post">
-        <div>
-            <label for="login">Login:</label>
-            <input type="text" id="login" name="login" required>
-        </div>
-        <div>
-            <label for="password">Mot de passe:</label>
-            <input type="text" id="password" name="password" required>
-        </div>
-        <button type="submit">Se connecter</button>
-    </form>
+    <div class="login-container">
+        <h2>Connexion</h2>
+        <?php if(isset($error)) { ?>
+            <p><?php echo $error; ?></p>
+        <?php } ?>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="username">Adresse email:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+        <p>Pas encore de compte ? <a href="inscription.html">Inscrivez-vous ici</a></p>
+    </div>
 </body>
 </html>
-
