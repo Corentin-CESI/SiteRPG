@@ -1,40 +1,117 @@
+<?php 
+    session_start();
+    require_once("db.php");
+
+    if(!isset($_SESSION['login'])) {
+        // Rediriger vers la page de connexion ou afficher un message d'erreur
+        header("Location: connexion.php");
+        exit();
+    }
+    $message = "Bienvenue sur la page des parties, " . $_SESSION['login'] . "!";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parties</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo&display=swap">
+    
+    <link href="css/styles_menu.css" rel="stylesheet"/>
     <link href="css/border_debug.css" rel="stylesheet"/>
     <link href="css/styles_parties.css"  rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet"/>
 </head>
 <body>
-    <?php require "header.html" ?>
-    <div class="search-container">
-        <h2>Recherche de Parties</h2>
-        <form action="#" method="GET">
-            <div class="form-group">
-                <label for="game-name">Nom du Jeu:</label>
-                <input type="text" id="game-name" name="game-name" placeholder="Entrez le nom du jeu">
-            </div>
-            <div class="form-group">
-                <label for="player-count">Nombre de Joueurs:</label>
-                <input type="number" id="player-count" name="player-count" placeholder="Entrez le nombre de joueurs">
-            </div>
-            <button type="submit">Rechercher</button>
-        </form>
-    </div>
+    <?php require "header.php" ?>
 
+<?php 
+    // Vérifie si les critères de recherche sont présents dans le formulaire soumis
+$horaire = isset($_GET['horaire']) ? $_GET['horaire'] : null;
+$duree = isset($_GET['duree']) ? $_GET['duree'] : null;
+
+try {
+    // Construit la requête SQL
+    $sql = "SELECT * FROM t_partie_pat WHERE 1=1";
+
+    // Ajoute les conditions en fonction des critères
+    if (!empty($horaire)) {
+        $sql .= " AND PAT_HORAIRE = :horaire";
+    }
+    if (!empty($duree)) {
+        $sql .= " AND PAT_DUREE = :duree";
+    }
+
+    // Prépare et exécute la requête SQL
+    $stmt = $pdo_conn->prepare($sql);
+    if (!empty($horaire)) {
+        $stmt->bindParam(':horaire', $horaire);
+    }
+    if (!empty($duree)) {
+        $stmt->bindParam(':duree', $duree);
+    }
+    $stmt->execute();
+
+    // Affiche le formulaire de recherche
+    echo "<div class='search-container'>";
+    echo "<h3>Recherche de Parties</h3>";
+    echo "<form method='GET' action='parties.php'>";
+    echo "<div class='form-group'>";
+    echo "<label for='horaire'>Horaire :</label>";
+    echo "<input type='datetime-local' id='horaire' name='horaire'>";
+    echo "</div>";
+    echo "<div class='form-group'>";
+    echo "<label for='duree'>Durée en minutes :</label>";
+    echo "<input type='number' id='duree' name='duree' min='0'>";
+    echo "</div>";
+    echo "<button type='submit'>Rechercher</button>";
+    echo "</form>";
+    echo "</div>";
+
+    // Récupére les résultats de la requête et affiche
+    echo "<div class='party-list'>";
+    echo "<h3>Résultats de la recherche</h3>";
+    echo "<br>";
+    while ($row = $stmt->fetch()) {
+        echo "<div class='game'>";
+        echo "<h4>" . $row['PAT_LIEU'] . "</h4>";
+        echo "<p>Horaire : " . $row['PAT_HORAIRE'] . "</p>";
+        echo "<p>Durée en min : " . $row['PAT_DUREE'] . "</p>";
+        echo "<p>ID maitre de jeu : " . $row['PAT_MAITREDUJEU'] . "</p>";
+        echo "</div>";
+    }
+    echo "</div>";
+} catch (PDOException $e) {
+    // Gére les erreurs de connexion
+    echo "Erreur de connexion: " . $e->getMessage();
+}
+?>
+
+<br>
+<hr>
     <div class="party-list">
         <h3>Liste des Parties Disponibles</h3>
-        <ul>
-            <li>Nom de la partie 1 - DM: Maître du Jeu - Joueurs: 3/5 - Durée: 2h</li>
-            <li>Nom de la partie 2 - DM: Maître du Jeu - Joueurs: 4/6 - Durée: 3h</li>
-        </ul>
+        <br>
+
+        <?php
+             $parties = getparty_static();            
+
+            for ($i=0; $i < count($parties) ; $i++) { 
+                $lieu = $parties[$i]["PAT_LIEU"];
+                $horaire = $parties[$i]["PAT_HORAIRE"];
+                $duree = $parties[$i]["PAT_DUREE"];
+                $maitredujeu = $parties[$i]["PAT_MAITREDUJEU"];
+                           
+                echo '
+                <div class="game">        
+                        <h4>'.$lieu.'</h4>
+                        <p>Horaire : '.$horaire.'</p>
+                        <p>Duree en min : '.$duree.'</p>
+                        <p>ID maitre de jeu : '.$maitredujeu.'</p>
+                </div>';
+            }
+        ?>
     </div>
 
-    <div class="create-party">
-        <button>Créer une Partie</button>
-    </div>
 </body>
 </html>
