@@ -1,4 +1,11 @@
 <?php 
+    session_start();
+    if(!isset($_SESSION['login'])) {
+        // Rediriger vers la page de connexion ou afficher un message d'erreur
+        header("Location: connexion.php");
+        exit();
+    }
+
     require_once("db.php");
 ?>
 

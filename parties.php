@@ -1,7 +1,15 @@
 <?php 
+    session_start();
     require_once("db.php");
+
+    if(!isset($_SESSION['login'])) {
+        // Rediriger vers la page de connexion ou afficher un message d'erreur
+        header("Location: connexion.php");
+        exit();
+    }
+    $message = "Bienvenue sur la page des parties, " . $_SESSION['login'] . "!";
 ?>
-    
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

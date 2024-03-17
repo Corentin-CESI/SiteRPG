@@ -1,6 +1,12 @@
 <?php 
-    require_once("db.php");
     session_start();
+    if(!isset($_SESSION['login'])) {
+        // Rediriger vers la page de connexion ou afficher un message d'erreur
+        header("Location: connexion.php");
+        exit();
+    }
+
+    require_once("db.php");
 ?>
 
 <!DOCTYPE html>
@@ -16,31 +22,32 @@
 </head>
 <body>
     <?php require "header.php" ?>
+ 
     <div class="game-list">
-    <?php 
-        $jeux = getjeux_static();
+        <?php 
+            $jeux = getjeux_static();
 
-        for ($i=0; $i < count($jeux) ; $i++) { 
+            for ($i=0; $i < count($jeux) ; $i++) { 
 
-            $titre = $jeux[$i]["UNI_NOM"];
+                $titre = $jeux[$i]["UNI_NOM"];
 
-            $srcImg = $jeux[$i]["UNI_ALIAS"];
-            $desc =  $jeux[$i]["UNI_DESCRIPTION"];
-                       
-            echo '
-            <div class="game">
-                 
-                    <h2>'.$titre.'</h2>
-                    <img src="'.$srcImg.'" alt="Logo Donjons & Dragons" />
-                    <p>'.$desc.'</p>
-                
-                <div>
-                    <button class="custom-button">règles</button>
-                    <button class="custom-button">scénario</button>
-                </div>
-            </div>';
-        }
-    ?>
+                $srcImg = $jeux[$i]["UNI_ALIAS"];
+                $desc =  $jeux[$i]["UNI_DESCRIPTION"];
+                           
+                echo '
+                <div class="game">
+                     
+                        <h2>'.$titre.'</h2>
+                        <img src="'.$srcImg.'" alt="Logo Donjons & Dragons" />
+                        <p>'.$desc.'</p>
+                    
+                    <div>
+                        <button class="custom-button">règles</button>
+                        <button class="custom-button">scénario</button>
+                    </div>
+                </div>';
+            }
+        ?>
     </div>
 </body>
 </html>

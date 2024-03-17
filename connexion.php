@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupère les valeurs du formulaire et nettoie les données
     $login = isset($_POST['login']) ? htmlspecialchars($_POST['login']) : "";
@@ -41,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Vérifie si le mot de passe est correct
             if ($pwd_unhashed == $user['CPT_PWD']) {
                 // Authentification réussie : stocke le login dans la session et redirige vers la page d'accueil
+                // Stocke le nom d'utilisateur dans la session
                 $_SESSION['login'] = $user['CPT_NOM'];
                 header("Location: index.php");
                 exit();
@@ -81,6 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Se connecter</button>
         </form>
         <p>Pas encore de compte ? <a href="inscription.php">Inscrivez-vous ici</a></p>
+        <button class="custom-button" onclick="window.location.href='index.php'">Retour à l'accueil</button>
+
     </div>
 </body>
 </html>
