@@ -26,11 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $pdo_conn = new PDO($dsn, $user, $password, $options);
         } catch (PDOException $e) {
             $error = "Erreur de connexion à la base de données: " . $e->getMessage();
-
         }
 
         // Requête SQL pour récupérer le mot de passe correspondant au login
-        $sql = "SELECT CPT_LOGIN, CPT_NOM, CPT_PWD FROM t_compte_cpt WHERE CPT_LOGIN = :login";
+        $sql = "SELECT CPT_NOM, CPT_PWD FROM t_compte_cpt WHERE CPT_NOM = :login";
         $stmt = $pdo_conn->prepare($sql);
         $stmt->bindParam(':login', $login);
         $stmt->execute();
@@ -38,16 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Vérifie si le login existe dans la base de données
         if ($stmt->rowCount() == 1) {
             $user = $stmt->fetch();
-            echo $pwd_unhashed;
-            echo $user['CPT_PWD'];
             
             // Vérifie si le mot de passe est correct
             if ($pwd_unhashed == $user['CPT_PWD']) {
                 // Authentification réussie : stocke le login dans la session et redirige vers la page d'accueil
-                $_SESSION['login'] = $user['CPT_LOGIN'];
-                $_SESSION['nom'] = $user['CPT_NOM'];
+                $_SESSION['login'] = $user['CPT_NOM'];
                 header("Location: index.php");
-                $error = "connexion reussi";
                 exit();
             } else {
                 $error = "Mot de passe incorrect.";
@@ -76,8 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php } ?>
         <form action="#" method="POST">
             <div class="form-group">
-                <label for="username">Adresse email:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="login">Nom d'utilisateur:</label>
+                <input type="text" id="login" name="login" required>
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe:</label>
