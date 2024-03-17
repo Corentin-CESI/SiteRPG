@@ -3,11 +3,11 @@
 
         <nav class="menu_principal border_red_dashed">     
             <ul>
-                <li>    <a href="index.php">Accueil</a>           </li>
-                <li>    <a href="parties.php">Parties</a>           </li>
-                <li>    <a href="jeux.php">Jeux</a>                 </li>
-                <li>    <a href="personnages.php">Personnages</a>   </li>
-                <li>    <a href="groupes">Groupes</a>           </li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="parties.php">Parties</a></li>
+                <li><a href="jeux.php">Jeux</a></li>
+                <li><a href="personnages.php">Personnages</a></li>
+                <li><a href="groupes">Groupes</a></li>
 
                 <?php if(isset($_SESSION['login'])) { ?>   
                     <li>Bienvenue, <?php echo $_SESSION['login']; ?></li>
