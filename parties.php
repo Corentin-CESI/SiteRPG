@@ -8,8 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parties</title>
+    
+    <link href="css/styles_menu.css" rel="stylesheet"/>
     <link href="css/border_debug.css" rel="stylesheet"/>
     <link href="css/styles_parties.css"  rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet"/>
 </head>
 <body>
     <?php require "header.php" ?>
@@ -60,8 +63,9 @@ try {
     // Récupére les résultats de la requête et affiche
     echo "<div class='party-list'>";
     echo "<h3>Résultats de la recherche</h3>";
+    echo "<br>";
     while ($row = $stmt->fetch()) {
-        echo "<div>";
+        echo "<div class='game'>";
         echo "<h4>" . $row['PAT_LIEU'] . "</h4>";
         echo "<p>Horaire : " . $row['PAT_HORAIRE'] . "</p>";
         echo "<p>Durée en min : " . $row['PAT_DUREE'] . "</p>";
@@ -96,7 +100,6 @@ try {
                         <p>Horaire : '.$horaire.'</p>
                         <p>Duree en min : '.$duree.'</p>
                         <p>ID maitre de jeu : '.$maitredujeu.'</p>
-                        <br>
                 </div>';
             }
         ?>

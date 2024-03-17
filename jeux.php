@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeux</title>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <link href="css/styles_menu.css" rel="stylesheet"/>
     <link href="css/border_debug.css" rel="stylesheet"/>
     <link href="css/styles_jeux.css" rel="stylesheet"/>
 </head>

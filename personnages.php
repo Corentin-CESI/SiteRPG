@@ -8,13 +8,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parties</title>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <link href="css/styles_menu.css" rel="stylesheet"/>
     <link href="css/border_debug.css" rel="stylesheet"/>
     <link href="css/styles_parties.css"  rel="stylesheet">
 </head>
 <body>
     <?php require "header.php" ?>
     <div class="character-list">
-        <h3>Liste de vos personnages</h3>    
+        <h1>Liste de vos personnages</h1> 
+        <br>   
         
         <?php
             $personnages = getpersonnage_static(); 
@@ -28,12 +31,24 @@
                            
                 echo '
                 <div class="game">        
-                        <h2>'.$nom.'</h2>
-                        <p>'.$race.''.$classe.'<p>'.$niveau.''.$actif.'</p>
+                        <h3>'.$nom.'</h3>
+                        <p>'.$race.'</p>
+                        <p>'.$classe.'</p>
+                        <p>'.$niveau.'</p>';
+
+                        // affiche "Actif" ou "Inactif"
+                        if ($actif == 1) {
+                            echo '<p>Actif</p>';
+                        } else if ($actif == 0) {
+                            echo '<p>Inactif</p>';
+                        } else {
+                            echo '<p>Valeur de $actif non reconnue</p>';
+                        }
+                        
+                echo '
                 </div>';
             }           
-        ?>
-
+        ?>                   
     </div>
     
 </body>

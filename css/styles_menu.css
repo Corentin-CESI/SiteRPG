@@ -1,11 +1,13 @@
+.menu_principal{
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 header.header {
     background-color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    font-family: 'Arimo', sans-serif;
-    /* max-height: 10px; */
 }
 
 .img_container{
@@ -13,8 +15,6 @@ header.header {
     width: 50px;
     background-image: url('../images/logo/logo.png');
     background-repeat: no-repeat;
-    /* background-attachment: fixed; */
-    /* background-size: 1920px 776px; */
     background-size: cover;
 }
 
@@ -29,21 +29,6 @@ header.header {
 }
 
 .menu_principal ul li a {
-    text-decoration: none;
-    padding: 10px;
-}
-
-.menu_connecter ul {
-    display: flex;
-    list-style: none;
-}
-
-.menu_connecter ul li {
-    margin: 0 10px;
-    color: white;
-}
-
-.menu_connecter ul li a {
     text-decoration: none;
     padding: 10px;
 }

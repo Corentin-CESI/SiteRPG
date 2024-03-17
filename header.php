@@ -1,8 +1,3 @@
-<head>
-    <link href="css/border_debug.css" rel="stylesheet"/>
-    <link href="css/styles_menu.css" rel="stylesheet"/>
-</head>
-
 <header class="header border_green_dashed">
     <div class="img_container border_red_dashed" >
 

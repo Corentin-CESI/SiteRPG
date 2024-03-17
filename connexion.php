@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $pdo_conn = new PDO($dsn, $user, $password, $options);
         } catch (PDOException $e) {
             $error = "Erreur de connexion à la base de données: " . $e->getMessage();
+
         }
 
         // Requête SQL pour récupérer le mot de passe correspondant au login
@@ -37,13 +38,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Vérifie si le login existe dans la base de données
         if ($stmt->rowCount() == 1) {
             $user = $stmt->fetch();
-
+            echo $pwd_unhashed;
+            echo $user['CPT_PWD'];
+            
             // Vérifie si le mot de passe est correct
-            if (password_verify($pwd_unhashed, $user['CPT_PWD'])) {
+            if ($pwd_unhashed == $user['CPT_PWD']) {
                 // Authentification réussie : stocke le login dans la session et redirige vers la page d'accueil
                 $_SESSION['login'] = $user['CPT_LOGIN'];
                 $_SESSION['nom'] = $user['CPT_NOM'];
                 header("Location: index.php");
+                $error = "connexion reussi";
                 exit();
             } else {
                 $error = "Mot de passe incorrect.";
@@ -61,7 +65,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <link href="css/styles_menu.css" rel="stylesheet"/>
 </head>
+
+<header>
+    <?php require "header.php" ?>
+</header>
+
 <body>
     <h2>Connexion</h2>
     <?php if(isset($error)) { ?>
@@ -74,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div>
             <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="text" id="password" name="password" required>
         </div>
         <button type="submit">Se connecter</button>
     </form>
