@@ -2,7 +2,7 @@
     <div class="content top_content border_green_dashed">
         <div class="left-content border_blueviolet_solid">
             <h2>Gérer facilement vos parties</h2>
-            <a href="../inscription.php" class="button-link">
+            <a href="../SiteRPG/inscription.php" class="button-link">
                 <button class="custom-button">Créer un compte</button>
             </a>
         </div>
